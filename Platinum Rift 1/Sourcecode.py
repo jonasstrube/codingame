@@ -9,12 +9,18 @@ import math
 # zone_count: the amount of zones on the map
 # link_count: the amount of links between all zones
 player_count, my_id, zone_count, link_count = [int(i) for i in input().split()]
+zones = [[0] * 2 for i in range(zone_count)]
+links = [[0] * 2 for i in range(link_count)]
+print("zone_id | platinum_source", file=sys.stderr, flush=True)
 for i in range(zone_count):
-    # zone_id: this zone's ID (between 0 and zoneCount-1)
-    # platinum_source: the amount of Platinum this zone can provide per game turn
     zone_id, platinum_source = [int(j) for j in input().split()]
+    zones[i][0] = zone_id           # zone_id: this zone's ID (between 0 and zoneCount-1)
+    zones[i][1] = platinum_source   # platinum_source: the amount of Platinum this zone can provide per game turn
+    print(str(zones[i][0]) + " | " + str(zones[i][1]), file=sys.stderr, flush=True)
 for i in range(link_count):
     zone_1, zone_2 = [int(j) for j in input().split()]
+    links[i][0] = zone_1
+    links[i][1] = zone_2
 
 # game loop
 while True:
